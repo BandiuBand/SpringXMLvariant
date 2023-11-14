@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans  xmlns="http://www.springframework.org/schema/beans"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:context="http://www.springframework.org/schema/context"
+        xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd">
+    <bean id="car" class="org.bandiu.springxmlvariant.Car">
+        <constructor-arg type="double" value="4.6"/>
+        <constructor-arg ref="engine"/>
+        <constructor-arg>
+            <list>
+                <ref bean="wheel"/>
+                <ref bean="wheel"/>
+                <ref bean="wheel"/>
+                <ref bean="wheel"/>
+                <ref bean="wheel"/>
+            </list>
+        </constructor-arg>
+    </bean>
+    <bean id="wheel" class="org.bandiu.springxmlvariant.Wheel" scope="prototype">
+    <constructor-arg ref="summerTare"/>
+    </bean>
+    <bean id="winterTare" class="org.bandiu.springxmlvariant.WinterTare" scope="prototype">
+        <constructor-arg type="int" value="18"/>
+    </bean>
+    <bean id="summerTare" class="org.bandiu.springxmlvariant.SummerTyre" scope="prototype">
+        <constructor-arg type="int" value="18"/>
+    </bean>
+    <bean id="engine"  class="org.bandiu.springxmlvariant.Engine">
+        <constructor-arg type="int" value="8"/>
+    </bean>
+</beans>
